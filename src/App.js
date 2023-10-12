@@ -1,23 +1,61 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+
+const tasks = [
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  },
+  {
+    "userId": 2,
+    "id": 2,
+    "title": "et porro tempora",
+    "completed": true
+  },
+  {
+    "userId": 6,
+    "id": 3,
+    "title": "fugiat veniam minus",
+    "completed": false
+  },
+  {
+    "userId": 31,
+    "id": 4,
+    "title": "quis ut nam facilis et officia qui",
+    "completed": true
+  },
+  {
+    "userId": 12,
+    "id": 5,
+    "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    "completed": false
+  },
+  {
+    "userId": 85,
+    "id": 6,
+    "title": "qui ullam ratione quibusdam voluptatem quia omnis",
+    "completed": false
+  }
+];
+
 function App() {
+  const [taskStatus, setTaskStatus] = useState({});
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Uzd saraksts</h1>
+      {tasks.map((task)=>(
+        <div key={task.id}>
+          <div className="tuks"></div>
+      <p className="taskss">{task.id}</p>
+          {task.title}
+        </div>
+
+      ))}
     </div>
   );
 }
