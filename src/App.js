@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 
-
 const tasks = [
   {
     "userId": 1,
@@ -44,18 +43,35 @@ const tasks = [
 function App() {
   const [taskStatus, setTaskStatus] = useState({});
 
-
+  const handleCheckboxChange = (taskId) => {
+    setTaskStatus((prevTaskStatus) => ({
+      ...prevTaskStatus,
+      [taskId]: !prevTaskStatus[taskId],
+    }));
+  };
+  
   return (
     <div className="App">
-      <h1>Uzd saraksts</h1>
-      {tasks.map((task)=>(
-        <div key={task.id}>
-          <div className="tuks"></div>
-      <p className="taskss">{task.id}</p>
-          {task.title}
-        </div>
+      <h1>Uzd sarakstins</h1>
+        {tasks.map((task) => (
+          <div key={task.id}>
+           <div className="tuks"> <img src="user.png" width="22" height="22"></img> 
+              <p className="tasksss">{task.id}</p>
+            </div>
+            <label>
+            <input
+              type="checkbox"
+              className="aplis"
+              checked={taskStatus[task.id] = task.completed}
+              //checked={taskStatus[task.id] || task.completed}
+              onChange={() => handleCheckboxChange(task.id)}
+            />
+              <span></span>
+            </label>
+            {task.title}
+          </div>
+        ))}
 
-      ))}
     </div>
   );
 }
